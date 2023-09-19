@@ -29,23 +29,38 @@ int main(int argc, char* argv[]) {
 			case ('B'): opp_hand = P; break;
 			case ('C'): opp_hand = S; break;
 		}
-		switch( line[2] ){
-			case ('X'): your_hand = R; hand_score = 1; break;
-			case ('Y'): your_hand = P; hand_score = 2; break;
-			case ('Z'): your_hand = S; hand_score = 3; break;
-		}
 		//cout << your_hand - opp_hand << endl;
-		switch ( your_hand - opp_hand ){
-		case (-2): rslt_score = 6; break;
-		case (-1): rslt_score = 0; break;
-		case (0): rslt_score = 3; break;
-		case (1): rslt_score = 6; break;
-		case (2): rslt_score = 0; break;
+		switch ( line[2] ){
+		case ('X'): 
+			switch( line[0] ){
+				case ('A'): hand_score = 3; break;
+				case ('B'): hand_score = 1; break;
+				case ('C'): hand_score = 2; break;
+			}
+			rslt_score = 0; 
+			break;
+
+		case ('Y'): 
+			switch( line[0] ){
+				case ('A'): hand_score = 1; break;
+				case ('B'): hand_score = 2; break;
+				case ('C'): hand_score = 3; break;
+			}
+			rslt_score = 3; 
+			break;
+		case ('Z'): 
+			switch( line[0] ){
+				case ('A'): hand_score = 2; break;
+				case ('B'): hand_score = 3; break;
+				case ('C'): hand_score = 1; break;
+			}
+			rslt_score = 6; 
+			break;
 		}
 		//cout << hand_score << " " << rslt_score << " " << hand_score + rslt_score << endl;
 		tot_score += hand_score + rslt_score;
 		//cout << "-------------" << endl;
 	}
-	cout << "part 1 final score: " << tot_score << endl;
+	cout << "part 2 final score: " << tot_score << endl;
 	file.close();
 }
