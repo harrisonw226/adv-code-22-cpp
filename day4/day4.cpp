@@ -13,10 +13,18 @@ struct bound {
 		lower = stoi(string(line, 0, line.find_first_of('-')));
 		upper = stoi(string(line, line.find_first_of('-')+1, line.length()));
 	}
-	int contains(bound other) {
+	int fully_contains(bound other) {
 		if (other.lower <= lower && other.upper >= upper)
 			return 1;
 		if (other.lower >= lower && other.upper <= upper)
+			return 1;
+		return 0;
+
+	}
+	int contains(bound other) {
+		if (other.lower >= lower && other.lower <= upper)
+			return 1;
+		if (other.lower <= lower && other.upper >= lower)
 			return 1;
 		return 0;
 
