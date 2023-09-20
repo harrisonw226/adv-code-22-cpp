@@ -65,16 +65,16 @@ int main(int argc, char* argv[]) {
 		holder.clear();
 		for (int i = 0; i < amount; i++) {
 			char temp = piles[from-1].back();
-			//holder.push_back(temp);
-			piles[to-1].push_back(temp);
+			holder.push_back(temp);
+			//piles[to-1].push_back(temp);
 			piles[from-1].pop_back();
-		}/*
+		}
 		for (int i = 0; i < amount; i++) {
 			char temp = holder.back();
 			piles[to-1].push_back(temp);
 			holder.pop_back();
 		}
-		*/
+		
 	}
 for (auto i : piles) cout << i.back();
 cout << endl;
