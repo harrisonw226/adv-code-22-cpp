@@ -1,11 +1,11 @@
 CC=g++
 
-OBJS_day_t := day_t.o
+OBJS := dayt.o
 
-day_t: ${OBJS_day_t}
+dayt: ${OBJS}
 
-${OBJS_day_t}: %.o: %.cpp
+${OBJS}: %.o: %.cpp
 
 
 clean:
-	rm *.o day_t
+	rm *.o dayt
