@@ -15,26 +15,31 @@ int main(int argc, char* argv[]) {
 	deque<char> signal_queue;
 	bool flag = 0;
 	while(std::getline(file, line)) {
-		int count = 1;
+		int position = 1;
 		for ( auto bit : line ) {
-			if (signal_queue.size() == 3) {
+			if (signal_queue.size() == 13) {
 				flag = 0;
 				//for (auto i : signal_queue) cout << i << " ";
 				//cout << endl;
-				if (signal_queue[0] == signal_queue[1] || signal_queue[0] == signal_queue[2] || signal_queue[1] == signal_queue[2]) {
-					flag = 1;
+	
+
+				for (auto i : signal_queue){
+					int occ = count(signal_queue.begin(), signal_queue.end(), i);
+					if ( occ != 1 ) {
+						flag = 1;
+					}
 				}
 
 				if (!flag && find(signal_queue.begin(), signal_queue.end(), bit) == signal_queue.end()) {
 					 
-					cout << "count = " << count << " bit = " << bit << endl;	
+					cout << "position = " << position << " bit = " << bit << endl;	
 					break;
 				}
 				signal_queue.pop_front();
 				
 			}
 			signal_queue.push_back(bit);
-			count += 1;
+			position += 1;
 		}
 	}
 	file.close();
